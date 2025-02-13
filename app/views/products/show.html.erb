@@ -30,7 +30,7 @@
     <div class="container shadow-lg p-3 mb-5 rounded order">
       <div class="row">
         <div class="col-2 col-lg-1 col-md-2">
-            <div class="container" style="height:533px;width:91px;overflow-y:scroll;scrollbar-width: none;">
+            <div class="container" style="height:400px;width:91px;overflow-y:scroll;scrollbar-width: none;">
               <div class="viewport">
                 <div class="thumbs content-box">
 
@@ -117,12 +117,17 @@
         </div>
         <div class="col-10 col-lg-4 col-md-4">
           <div class="photo-box">
-            <%= image_tag(@main_photo, style:"width: 35.7rem;") %>
+            <%= image_tag(@main_photo, style:"width: 35.7rem; z-index: 1;") %>
+
+              <center style="z-index: 2; margin-top: -30px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+  </svg><%= @product.impressionist_count(:filter=>:ip_address) %></center>
+
+
           </div>
           <br>
-          <center>
-            <p style="color: yellow;"><%= t('product.see')%><%= @product.impressionist_count(:filter=>:ip_address) %></p>
-          </center>
+
         </div>
         <div class="col-12 col-lg-4 col-md-12">
           <div class="image-scroll-container">
