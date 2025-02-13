@@ -297,7 +297,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_13_130522) do
   add_foreign_key "articles", "products"
   add_foreign_key "articles", "users"
   add_foreign_key "clasps", "products"
-  add_foreign_key "colors", "products"
   add_foreign_key "colors_products", "colors"
   add_foreign_key "colors_products", "products"
   add_foreign_key "comments", "articles"
