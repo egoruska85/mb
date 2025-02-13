@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="background-color: #121212;">
+    <%= render 'layouts/navbar' %>
+    <br>
+    <p class="gradient-text">
+      <%= @page_title %>
+    </p>
+    <div class="container card-body" style="min-height: 187px; background-image: linear-gradient(
+        45deg,
+        hsl(0deg 100% 20%) 0%,
+        hsl(9deg 93% 24%) 8%,
+        hsl(16deg 92% 28%) 17%,
+        hsl(22deg 95% 31%) 25%,
+        hsl(27deg 100% 33%) 33%,
+        hsl(30deg 100% 36%) 42%,
+        hsl(34deg 100% 39%) 50%,
+        hsl(37deg 100% 41%) 58%,
+        hsl(40deg 100% 44%) 67%,
+        hsl(44deg 100% 46%) 75%,
+        hsl(47deg 100% 47%) 83%,
+        hsl(51deg 100% 49%) 92%,
+        hsl(55deg 100% 50%) 100%">
+        <br>
+        <center><h3 style="color: black;"><%= "Нету обращений" if @articles.empty? %></h3></center>
+          <div class="container">
+            <table class="table">
+              <thead>
+                <tr class="table-warning">
+                  <th scope="col">№</th>
+                  <th scope="col"><%= t('articles.themes')%></th>
+                  <th scope="col"><%= t('articles.message') %></th>
+                  <% if current_user.admin == true %>
+                    <th scope="col"><%= t('articles.user') %></th>
+                  <% end %>
+                </tr>
+              </thead>
+              <tbody>
+              <% @articles.each do |article| %>
+                <tr>
+                  <th class="table-info" scope="row"><%= article.id %></th>
+                  <td>
+                    <%= link_to article_path(article), class:"nav-link" do %>
+                      <% product = @products[article.product_id]%>
+                      <%= product.name_rus if params[:locale] != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+                      <%= product.name_rus if params[:locale] == 'ru' %>
+                      <%= product.name_eng if params[:locale] == 'en' %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= article.message.present? ? article.message.slice(0, 200) : '' %>
+                  </td>
+                  <% if current_user.admin == true %>
+                    <td>
+                      <%= link_to "/rails_admin/user/#{article.user_id}/edit", class:'btn btn-primary', style:'width: 200px;', target:'_blank' do %>
+                      <%= article.user.username %>
+                      <hr>
+                      <%= article.user.email %>
+                      <% end %>
+                    </td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+
+    </div>
+    <br>
+    <div class="container card-body" style="min-height: 187px; background-image: linear-gradient(
+        45deg,
+        hsl(0deg 100% 20%) 0%,
+        hsl(9deg 93% 24%) 8%,
+        hsl(16deg 92% 28%) 17%,
+        hsl(22deg 95% 31%) 25%,
+        hsl(27deg 100% 33%) 33%,
+        hsl(30deg 100% 36%) 42%,
+        hsl(34deg 100% 39%) 50%,
+        hsl(37deg 100% 41%) 58%,
+        hsl(40deg 100% 44%) 67%,
+        hsl(44deg 100% 46%) 75%,
+        hsl(47deg 100% 47%) 83%,
+        hsl(51deg 100% 49%) 92%,
+        hsl(55deg 100% 50%) 100%">
+        <br>
+        <%= form_for :article, url: articles_path do |f| %>
+          <center>
+            <h4 style="color: black;"><%= t('articles.themes') %></h4>
+              <div class="" style="width: 300px;">
+                  <%= f.select :product_id, options_for_select(@products.collect{ |product| [product.name_rus, product.id] }), {}, {class: "form-control form-control-lg"} if params[:locale] != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+                  <%= f.select :product_id, options_for_select(@products.collect{ |product| [product.name_rus, product.id] }), {}, {class: "form-control form-control-lg"} if params[:locale] == 'ru' %>
+                  <%= f.select :product_id, options_for_select(@products.collect{ |product| [product.name_eng, product.id] }), {}, {class: "form-control form-control-lg"} if params[:locale] == 'en' %>
+              </div>
+              <br>
+              <div class="">
+                <h4 style="color: black;"><%= t('articles.message') %></h4>
+                <%= f.text_area :message, class:"form-control", rows:"6" %>
+              </div>
+              <br>
+              <%= f.submit t('articles.send'), class:"btn btn-warning" %>
+              <br><br>
+          </center>
+        <% end %>
+    </div>
+
+  </body>
+</html>

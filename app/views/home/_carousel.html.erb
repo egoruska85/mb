@@ -1,0 +1,91 @@
+<br><br>
+<div class="carousel">
+  <div class="list">
+    <% @carouseles.each do |carousel| %>
+      <div class="item">
+        <!-- slider 1 content start -->
+
+
+        <%= image_tag(carousel.image, alt:"Slider image #{carousel.id}", style:"width: 30rem;") %>
+        <div class="intro">
+          <% if carousel.category_rus.present? || carousel.category_eng.present? %>
+            <div class="title">
+              <%= carousel.category_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+              <%= carousel.category_eng if params[:locale] == 'en' %>
+              <%= carousel.category_rus if params[:locale] == 'ru' %>
+            </div>
+          <% end %>
+          <% if carousel.title_rus.present? || carousel.title_eng.present? %>
+            <div class="topic" style="color: yellow">
+              <%= carousel.title_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+              <%= carousel.title_eng if params[:locale] == 'en' %>
+              <%= carousel.title_rus if params[:locale] == 'ru' %>
+            </div>
+          <% end %>
+          <% if carousel.body_rus.present? || carousel.body_eng.present? %>
+            <div class="description" style="color: #B8860B">
+              <%= simple_format carousel.body_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+              <%= simple_format carousel.body_eng if params[:locale] == 'en' %>
+              <%= simple_format carousel.body_rus if params[:locale] == 'ru' %>
+            </div>
+          <% end %>
+          <% if carousel.details == true %>
+            <button class="seeMore"><%= t('carousel.details')%> <span>&gt;</span></button>
+          <% elsif carousel.link != nil %>
+            <%= link_to "#{carousel.link}", class:"seeMore" do %>
+            <%= carousel.link_desc_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+            <%= carousel.link_desc_eng if params[:locale] == 'en' %>
+            <%= carousel.link_desc_rus if params[:locale] == 'ru' %>
+            <% end %>
+          <% end %>
+        </div>
+          <!-- slider details start -->
+        <% if carousel.details == true %>
+        <div class="detail">
+          <div class="title" style="color: yellow">
+            <br>
+            <%= carousel.title_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+            <%= carousel.title_eng if params[:locale] == 'en' %>
+            <%= carousel.title_rus if params[:locale] == 'ru' %>
+          </div>
+          <div class="description" style="color: #B8860B">
+            <%= carousel.body_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+            <%= carousel.body_eng if params[:locale] == 'en' %>
+            <%= carousel.body_rus if params[:locale] == 'ru' %>
+          </div>
+          <div class="specifications" style="color: #DCDCDC">
+            <div>
+              <p><%= t('carousel.sizes')%></p>
+              <p><%= carousel.details_sizes %></p>
+            </div>
+            <div>
+              <p><%= t('carousel.colors') %></p>
+              <p><%= carousel.details_colors %></p>
+            </div>
+            <div>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" style="font-size: 25px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0m-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+</svg><%= t('carousel.buy')%>
+              </button>
+            </div>
+          </div>
+
+
+        </div>
+        <% end %>
+        <!-- slider details end -->
+
+        <!-- slider 1 content end -->
+      </div>
+      <% @carousel_item = carousel %>
+
+    <% end %>
+  </div>
+  <div class="arrows">
+    <button id="prev">&lt;</button>
+    <button id="back"><span>&lt;</span></button>
+    <button id="next">&gt;</button>
+  </div>
+</div>
+<%= render 'mobilebuy' %>

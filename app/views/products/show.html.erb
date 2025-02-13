@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&amp;subset=cyrillic" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/css/scroll.css">
+  </head>
+
+  <body style="background: #121212;">
+    <%= render 'layouts/top_navbar' %>
+    <%= render 'layouts/bottom_navbar' %>
+    <br>
+    <center>
+      <p class="gradient-text">
+        <%= @product.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+        <%= @product.name_eng if params[:locale] == 'en' %>
+        <%= @product.name_rus if params[:locale] == 'ru' %>
+      </p>
+    </center>
+
+
+
+<div class="shadow-lg p-3 mb-5 rounded order">
+  <div class="flex" data-gallary>
+    <div class="container shadow-lg p-3 mb-5 rounded order">
+      <div class="row">
+        <div class="col-2 col-lg-1 col-md-2">
+            <div class="container" style="height:533px;width:91px;overflow-y:scroll;scrollbar-width: none;">
+              <div class="viewport">
+                <div class="thumbs content-box">
+
+
+                  <% if @product.videos.attached? %>
+
+                  <% @product.videos.each do |video| %>
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalVideo" style="width: 6rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-play-fill" viewBox="0 0 16 16">
+  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M6 5.883a.5.5 0 0 1 .757-.429l3.528 2.117a.5.5 0 0 1 0 .858l-3.528 2.117a.5.5 0 0 1-.757-.43V5.884z"/>
+</svg>
+                    <%= video_tag rails_blob_path(video), size: "50x85", style:"width: 6rem;" %>
+                  </button>
+                  <hr>
+
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalVideo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen-sm-down">
+                      <div class="modal-content" style="background-image: linear-gradient(
+                          45deg,
+                          hsl(0deg 100% 20%) 0%,
+                          hsl(9deg 93% 24%) 8%,
+                          hsl(16deg 92% 28%) 17%,
+                          hsl(22deg 95% 31%) 25%,
+                          hsl(27deg 100% 33%) 33%,
+                          hsl(30deg 100% 36%) 42%,
+                          hsl(34deg 100% 39%) 50%,
+                          hsl(37deg 100% 41%) 58%,
+                          hsl(40deg 100% 44%) 67%,
+                          hsl(44deg 100% 46%) 75%,
+                          hsl(47deg 100% 47%) 83%,
+                          hsl(51deg 100% 49%) 92%,
+                          hsl(55deg 100% 50%) 100%">
+
+                        <div class="modal-body">
+                          <div class="modal-header">
+                            <div class="row">
+                              <div class="col-11">
+                                <h1>
+                                  <%= @product.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+                                  <%= @product.name_eng if params[:locale] == 'en' %>
+                                  <%= @product.name_rus if params[:locale] == 'ru' %>
+                                </h1>
+                              </div>
+                              <div class="col-1">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+      </svg></button>
+                              </div>
+                            </div>
+
+
+                          </div>
+                          <center>
+                            <div class="modal-body" style="margin-top: -30px;">
+                          <%= video_tag url_for(video), size: "320x720", controls: true, audio: false do %>
+                            </div>
+                          <% end %>
+                          </center>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <br><br>
+                  <% end %>
+                  <% end %>
+                  <% if @product.images.attached? %>
+
+                    <% @product.images.each do |image| %>
+                      <%= image_tag(image, style:"width: 6rem;") %>
+
+                    <br><br>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+           </div>
+
+        </div>
+        <div class="col-10 col-lg-4 col-md-4">
+          <div class="photo-box">
+            <%= image_tag(@main_photo, style:"width: 35.7rem;") %>
+          </div>
+          <br>
+          <center>
+            <p style="color: yellow;"><%= t('product.see')%><%= @product.impressionist_count(:filter=>:ip_address) %></p>
+          </center>
+        </div>
+        <div class="col-12 col-lg-4 col-md-12">
+          <div class="image-scroll-container">
+              <div class="image-scroll">
+                <% @related_products.each do |product| %>
+                  <%= link_to product_path(product) do %>
+                    <div class="order border-danger">
+                      <%= image_tag(product.images.first) %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+          </div>
+          <script src="/js/script.js"></script>
+          <div class="row">
+            <div class="col-8 col-md-4 col-lg-8">
+              <h4 style="color: #D3D3D3;">
+                <%= t('product.category')%>
+                <%= link_to category_path(@category), style:"color: #B8860B;" do %>
+                  <%= @category.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+                  <%= @category.name_eng if params[:locale] == 'en' %>
+                  <%= @category.name_rus if params[:locale] == 'ru' %>
+                <% end %>
+              </h4>
+            </div>
+            <div class="col-4 col-md-4 col-lg-4">
+              <div class="row">
+                <div class="col-6">
+                  <h4 style="color: #D3D3D3;"><%= t('product.country')%></h4>
+                </div>
+                <div class="col-6">
+                 <h4 style="color: #B8860B;">
+                    <%= @country.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+                    <%= @country.name_eng if params[:locale] == 'en' %>
+                    <%= @country.name_rus if params[:locale] == 'ru' %>
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-8 col-md-4 col-lg-8">
+              <h4 style="color: #D3D3D3;">
+                <%= t('product.sizes')%>
+                <%= link_to category_path(@category), style:"color: #B8860B;" do %>
+                  <%= @product.sizes %>
+                <% end %>
+              </h4>
+            </div>
+            <div class="col-12">
+              <div class="row">
+                <div class="col-4">
+                  <h4 style="color: #D3D3D3;">
+                    <%= t('product.description')%>
+                  </h4>
+                </div>
+                <div class="col-8" style="min-height: 350px; max-height: 350px;">
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="btn btn-dark active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true" style="color: #B8860B;">
+                        <%= t('product.about') %>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="btn btn-dark" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false" style="color: #B8860B;">
+                        <%= t('product.characteristics') %>
+                      </button>
+
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0" style="color: white;">
+                      <h5 style="color: #D3D3D3;">
+                        <%= @product.description_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+                        <%= @product.description_eng if params[:locale] == 'en' %>
+                        <%= @product.description_rus if params[:locale] == 'ru' %>
+                      </h5>
+                    </div>
+                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                      <%= render 'characteristics' %>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="col-12">
+              <h3 style="color: #B8860B;"><%= t('product.buy') %></h3>
+              <div class="row">
+                <div class="col-3">
+                  <% if @product.ozon != nil %>
+                    <%= link_to "#{@product.ozon}", target:"_blank" do %>
+                      <img src="/images/png-klev-club-l6k6-p-ozon-ikonka-png-2.png" style="width: 80px;" alt="">
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="col-3">
+                  <% if @product.ozon != nil %>
+                    <%= link_to "#{@product.wb}", target:"_blank" do %>
+                      <img src="/images/gas-kvas-com-p-logotip-vaildberriz-na-prozrachnom-fone-28.png" style="width: 80px;" alt="">
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <hr>
+            <div class="col-12">
+              <div class="row">
+                <div class="col-12">
+                  <h3 style="color: #DCDCDC;"><%= t('product.reviews')%></h3>
+                </div>
+                <hr>
+                <div style="width:484px;overflow:hidden;">
+                  <div style="height:200px;width:500px;overflow-x:hidden;">
+                <% if @product.productcomments.any? %>
+
+                  <% @product.productcomments.each do |comment| %>
+
+                        <div class="row">
+                          <div class="col-4">
+                            <h5 style="color: #B8860B;"><%= "#{comment.user.username}: " %></h5>
+                          </div>
+                          <div class="col-8">
+                            <h5 style="color: #DCDCDC;"><%= comment.message %></h5>
+                          </div>
+                        </div>
+
+                    <hr>
+                  <% end %>
+
+                <% else %>
+                  <p>Без коментариев</p>
+                <% end %>
+              </div>
+            </div>
+                <div class="col-12 mb-3">
+                  <%= form_for([@product, @product.productcomments.build]) do |f| %>
+                    <%= f.label t('product.message') %>
+                    <br>
+                    <%= f.text_area :message, type:"text", class:"form-control", id:"exampleFormControlInput1" %>
+
+                    <br>
+                  <%= f.submit 'Оставить отзыв', class: "btn btn-info mx-1" %>
+
+                  <% end %>
+
+                </div>
+              </div>
+              <h3>
+
+
+
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+
+      <div class="flex control-row">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<hr>
+
+<% if recent_products.any? %>
+
+<% end %>
+<div class="container">
+  <center>
+    <p class="gradient-text">
+      <%= t('product.recently') %>
+    </p>
+  </center>
+  <div class="row">
+    <% if recent_products.any? %>
+      <% recent_products.each do |product| %>
+        <div class="col-6 col-lg-4">
+          <center>
+            <%= link_to product_path(product), class:'nav-link' do %>
+              <div class="card border border-warning-subtle" style="width: 20rem;">
+                <%= image_tag(product.images.first, class:"card-img-top", alt:"...") %>
+
+                <div class="card-body" style="height: 58px; background-image: linear-gradient(
+                    45deg,
+                    hsl(0deg 100% 20%) 0%,
+                    hsl(9deg 93% 24%) 8%,
+                    hsl(16deg 92% 28%) 17%,
+                    hsl(22deg 95% 31%) 25%,
+                    hsl(27deg 100% 33%) 33%,
+                    hsl(30deg 100% 36%) 42%,
+                    hsl(34deg 100% 39%) 50%,
+                    hsl(37deg 100% 41%) 58%,
+                    hsl(40deg 100% 44%) 67%,
+                    hsl(44deg 100% 46%) 75%,
+                    hsl(47deg 100% 47%) 83%,
+                    hsl(51deg 100% 49%) 92%,
+                    hsl(55deg 100% 50%) 100%">
+                  <h4><%= product.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en'  %></h4>
+                  <h4><%= product.name_eng if params[:locale] == 'en' %></h4>
+                  <h4><%= product.name_rus if params[:locale] == 'ru' %></h4>
+                </div>
+              </div>
+            <% end %>
+            <br>
+          </center>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+  <script src="/js/goodsgallery.function.js"></script>
+  <script src="/js/scrollbox.function.js"></script>
+
+  </body>
+</html>

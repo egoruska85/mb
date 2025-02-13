@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="background-color: #121212;">
+    <%= render 'layouts/top_navbar' %>
+    <%= render 'layouts/bottom_navbar' %>
+    <div class="container">
+      <p class="gradient-text">
+        <%= link_to t('category.category')%>
+      </p>
+      <br><br>
+      <div class="row">
+        <% @categories.each do |category| %>
+          <div class="col-6 col-lg-4">
+            <center>
+              <%= link_to category_path(category), class:'nav-link' do %>
+                <div class="card border border-warning-subtle" style="width: 20rem;">
+
+                  <div class="card-body" style="height: 58px; background-image: linear-gradient(
+                      45deg,
+                      hsl(0deg 100% 20%) 0%,
+                      hsl(9deg 93% 24%) 8%,
+                      hsl(16deg 92% 28%) 17%,
+                      hsl(22deg 95% 31%) 25%,
+                      hsl(27deg 100% 33%) 33%,
+                      hsl(30deg 100% 36%) 42%,
+                      hsl(34deg 100% 39%) 50%,
+                      hsl(37deg 100% 41%) 58%,
+                      hsl(40deg 100% 44%) 67%,
+                      hsl(44deg 100% 46%) 75%,
+                      hsl(47deg 100% 47%) 83%,
+                      hsl(51deg 100% 49%) 92%,
+                      hsl(55deg 100% 50%) 100%">
+
+                      <h4><%= category.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %></h4>
+                      <h4><%= category.name_eng if params[:locale] == 'en' %></h4>
+                      <h4><%= category.name_rus if params[:locale] == 'ru' %></h4>
+
+                  </div>
+                </div>
+              <% end %>
+            </center>
+            <br><br>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </body>
+</html>

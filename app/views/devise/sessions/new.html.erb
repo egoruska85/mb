@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="background: #121212;">
+    <%= render 'layouts/top_navbar' %>
+    <%= render 'layouts/bottom_navbar' %>
+    <br><br><br><br><br><br><br><br>
+    <center>
+    <div class="shadow-none p-3 mb-5 bg-body-tertiary rounded" style="margin-top: 6px; width: 250px; background-image: linear-gradient(
+        45deg,
+        hsl(0deg 100% 20%) 0%,
+        hsl(9deg 93% 24%) 8%,
+        hsl(16deg 92% 28%) 17%,
+        hsl(22deg 95% 31%) 25%,
+        hsl(27deg 100% 33%) 33%,
+        hsl(30deg 100% 36%) 42%,
+        hsl(34deg 100% 39%) 50%,
+        hsl(37deg 100% 41%) 58%,
+        hsl(40deg 100% 44%) 67%,
+        hsl(44deg 100% 46%) 75%,
+        hsl(47deg 100% 47%) 83%,
+        hsl(51deg 100% 49%) 92%,
+        hsl(55deg 100% 50%) 100%">
+      <center><h1><%= t('.sign_in') %></h1></center>
+      <center>
+        <div style="width: 200px;">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-group">
+              <%= f.label 'Логин', class:"text-black" %><br />
+              <%= f.text_field :login, autofocus: true, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password, class:"text-black" %>
+              <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+            </div>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="form-group form-check">
+                <%= f.check_box :remember_me, class: 'form-check-input text-black' %>
+                <%= f.label :remember_me, class: 'form-check-label text-black' do %>
+                  <%= resource.class.human_attribute_name('remember_me') %>
+                <% end %>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= f.submit  t('.sign_in'), class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+          <br>
+          <%= render 'devise/shared/links' %>
+          <br>
+          <%= link_to 'На главную', root_path, class:"btn btn-info" %>
+        </div>
+      </center>
+    </div>
+    <br>
+    </center>
+
+  </body>
+</html>

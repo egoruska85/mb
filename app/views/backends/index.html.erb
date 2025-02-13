@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <title></title>
+  </head>
+  <body style="background: #121212;">
+    <%= render 'layouts/top_navbar' %>
+    <%= render 'layouts/bottom_navbar' %>
+    <p class="gradient-text">
+      <%= t('about.about') %>
+    </p>
+    <div class="container card-body" style="min-height: 397px; background: linear-gradient(135deg, rgba(128,0,0,1) 0%, rgba(184,134,11,1) 50%, rgba(184,133,11,1) 100%);">
+        <br>
+        <div class="row">
+          <div class="col-12 col-lg-12">
+            <center>
+              <%= image_tag(@sitedetail.logo, style:"width: 30rem;") %>
+            </center>
+          </div>
+          <div class="col-12 col-lg-12">
+            <center>
+              <p style="color: black; font-size: 15px;">
+                <%= @backend.about_rus if params[:locale] != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+                <%= @backend.about_rus if params[:locale] == 'ru' %>
+                <%= @backend.about_eng if params[:locale] == 'en' %>
+              </p>
+            </center>
+          </div>
+
+        </div>
+    </div>
+    <br>
+    <div class="container card-body" style="min-height: 307px; background-image: linear-gradient(
+        45deg,
+        hsl(0deg 100% 20%) 0%,
+        hsl(9deg 93% 24%) 8%,
+        hsl(16deg 92% 28%) 17%,
+        hsl(22deg 95% 31%) 25%,
+        hsl(27deg 100% 33%) 33%,
+        hsl(30deg 100% 36%) 42%,
+        hsl(34deg 100% 39%) 50%,
+        hsl(37deg 100% 41%) 58%,
+        hsl(40deg 100% 44%) 67%,
+        hsl(44deg 100% 46%) 75%,
+        hsl(47deg 100% 47%) 83%,
+        hsl(51deg 100% 49%) 92%,
+        hsl(55deg 100% 50%) 100%">
+        <br>
+        <center><h1><%= t('contact.documentation') %></h1></center>
+        <hr>
+        <div class="row">
+          <div class="col-12 col-lg-6">
+            <% if @backend.files.attached? %>
+              <div class="row">
+                <% @backend.files.each do |file| %>
+                  <div class="col-6">
+                    <center>
+                      <%= link_to file, target:"_blank" do %>
+                        <%= image_tag "/images/free-icon-pdf-9496432.png", style:"width: 8rem;" %>
+                      <% end %>
+                    </center>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+            <br>
+          </div>
+          <div class="col-12 col-lg-6">
+            <% if @backend.images.attached? %>
+            <div class="row">
+              <% @backend.images.each do |image| %>
+                <div class="col-6">
+                  <center>
+                    <div class="card" style="width: 18rem;">
+                      <%= link_to image do %>
+                        <%= image_tag(image, class:"card-img-top", alt:"...") %>
+                      <% end %>
+                    </div>
+                  </center>
+                  </div>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="container card-body" style="min-height: 307px; background-image: linear-gradient(
+        45deg,
+        hsl(0deg 100% 20%) 0%,
+        hsl(9deg 93% 24%) 8%,
+        hsl(16deg 92% 28%) 17%,
+        hsl(22deg 95% 31%) 25%,
+        hsl(27deg 100% 33%) 33%,
+        hsl(30deg 100% 36%) 42%,
+        hsl(34deg 100% 39%) 50%,
+        hsl(37deg 100% 41%) 58%,
+        hsl(40deg 100% 44%) 67%,
+        hsl(44deg 100% 46%) 75%,
+        hsl(47deg 100% 47%) 83%,
+        hsl(51deg 100% 49%) 92%,
+        hsl(55deg 100% 50%) 100%">
+        <br>
+<div class="row">
+  <div class="col-1 col-lg-1">
+
+  </div>
+  <div class="col-10 col-lg-5">
+    <center>
+    <%= form_for @contact do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label t('contact.name') %>
+          <%= f.text_field :name, class:'form-control', placeholder: t('contact.name')%>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label t('contact.mail') %>
+          <%= f.text_field :email, class:'form-control', placeholder: t('contact.mail')%>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+
+          <%= f.label t('contact.sales_phone') %>
+          <%= f.text_field :phone, class:'form-control', placeholder: t('contact.sales_phone'), value:'+'%>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label t('contact.message') %>
+          <%= f.text_area :message, class:'form-control', placeholder: t('contact.message'), rows:"6" %>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.file_field :file, class:'form-control', type:'file', id:'formFileMultiple', multiple: true %>
+        </div>
+      </div>
+    <br><br>
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.submit 'Отправить', class:'btn btn-primary'%>
+          <div class="submitting"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="col-lg-5">
+  <br>
+  <center>
+    <h1><%= t('contact.social')%></h1>
+    <% if @backend.instagram != nil %>
+      <%= link_to "#{@backend.instagram}" do %>
+        <%= image_tag "/images/klipartz.com (1).png", style:"width: 8rem;"%>
+      <% end %>
+    <% end %>
+    <% if @backend.vk != nil  %>
+      <%= link_to "#{@backend.vk}" do %>
+        <%= image_tag "/images/free-icon-vk-2504953.png", style:"width: 8rem;"%>
+      <% end %>
+    <% end %>
+    <% if @backend.telegram != nil  %>
+      <%= link_to "https://telegram.me/#{@backend.telegram}" do %>
+        <%= image_tag "/images/free-icon-telegram-2111646.png", style:"width: 8rem;"%>
+      <% end %>
+    <% end %>
+    <% if @backend.whatsapp != nil  %>
+      <%= link_to "https://api.whatsapp.com/send/?phone=(#{@backend.whatsapp})" do %>
+        <%= image_tag "/images/free-icon-whatsapp-2504957.png", style:"width: 8rem;"%>
+      <% end %>
+    <% end %>
+  </center>
+  <br>
+</div>
+  </div>
+</div>
+
+
+
+
+  </body>
+</html>

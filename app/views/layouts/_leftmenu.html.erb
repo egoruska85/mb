@@ -1,0 +1,110 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background-image: linear-gradient(
+        45deg,
+        hsl(0deg 100% 20%) 0%,
+        hsl(9deg 93% 24%) 8%,
+        hsl(16deg 92% 28%) 17%,
+        hsl(22deg 95% 31%) 25%,
+        hsl(27deg 100% 33%) 33%,
+        hsl(30deg 100% 36%) 42%,
+        hsl(34deg 100% 39%) 50%,
+        hsl(37deg 100% 41%) 58%,
+        hsl(40deg 100% 44%) 67%,
+        hsl(44deg 100% 46%) 75%,
+        hsl(47deg 100% 47%) 83%,
+        hsl(51deg 100% 49%) 92%,
+        hsl(55deg 100% 50%) 100%">
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-11">
+  <h1 class="modal-title fs-5" id="exampleModalLabel"><%= image_tag(@logo, style:'width: 8rem;') %></h1>
+    </div>
+    <div class="col-1">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+  </div>
+
+
+</div>
+
+
+      <div class="modal-body">
+
+        <div class="row">
+          <% @top_categories.each do |category| %>
+            <div class="col-6">
+              <%= link_to category_path(category), class:"nav-link active", style:"font-size: 15px; color: black;" do %>
+                <%= category.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+                <%= category.name_eng if params[:locale] == 'en' %>
+                <%= category.name_rus if params[:locale] == 'ru' %>
+              <% end %>
+
+            </div>
+
+
+          <% end %>
+
+
+
+
+
+
+
+    </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-start rounded" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" style="margin-top: 171px; max-height: 700px;width: 200px; background-image: linear-gradient(
+    45deg,
+    hsl(0deg 100% 20%) 0%,
+    hsl(9deg 93% 24%) 8%,
+    hsl(16deg 92% 28%) 17%,
+    hsl(22deg 95% 31%) 25%,
+    hsl(27deg 100% 33%) 33%,
+    hsl(30deg 100% 36%) 42%,
+    hsl(34deg 100% 39%) 50%,
+    hsl(37deg 100% 41%) 58%,
+    hsl(40deg 100% 44%) 67%,
+    hsl(44deg 100% 46%) 75%,
+    hsl(47deg 100% 47%) 83%,
+    hsl(51deg 100% 49%) 92%,
+    hsl(55deg 100% 50%) 100%">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+  </div>
+  <div class="offcanvas-body">
+    <% @top_categories.each do |category| %>
+
+    <%= link_to category_path(category), class:"nav-link active", style:"font-size: 18px; color: black;" do %>
+      <%= category.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+      <%= category.name_eng if params[:locale] == 'en' %>
+      <%= category.name_rus if params[:locale] == 'ru' %>
+    <% end %>
+
+
+    <% end %>
+        <hr>
+    <% @other_categories.each do |category| %>
+
+        <%= link_to category_path(category), class:"nav-link active", style:"font-size: 18px;  color: black;" do %>
+          <%= category.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en'%>
+          <%= category.name_eng if params[:locale] == 'en' %>
+          <%= category.name_rus if params[:locale] == 'ru' %>
+        <% end %>
+        <hr>
+
+    <% end %>
+    <hr class="dropdown-divider">
+    <%= link_to t('navbar.categories'), categories_path, class:'nav-link active', style:"font-size: 16px; color: black;" %>
+    <%= link_to t('navbar.products'), products_path, class:'nav-link active', style:"font-size: 16px; color: black;" %>
+  </div>
+</div>

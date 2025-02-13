@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category_rus: MyString
+  category_eng: MyString
+  title_rus: MyString
+  title_eng: MyString
+  body_rus: MyText
+  body_eng: MyText
+  details: false
+  details_sizes: MyString
+  details_colors: MyText
+  details_more: MyText
+  details_buy_ozon: MyString
+  details_buy_wb: MyString
+
+two:
+  category_rus: MyString
+  category_eng: MyString
+  title_rus: MyString
+  title_eng: MyString
+  body_rus: MyText
+  body_eng: MyText
+  details: false
+  details_sizes: MyString
+  details_colors: MyText
+  details_more: MyText
+  details_buy_ozon: MyString
+  details_buy_wb: MyString

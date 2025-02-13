@@ -1,0 +1,14 @@
+.image-scroll-container {
+    width: 100%;
+    overflow: hidden; /* Скрываем скроллбар контейнера */
+    position: relative;
+}
+
+.image-scroll {
+    display: flex; /* Используем flexbox для горизонтального расположения изображений */
+}
+
+.image-scroll img {
+    width: 3rem; /* Высота изображений */
+    margin-right: 10px; /* Отступ между изображениями */
+}
