@@ -3,9 +3,9 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
 
-  config.authorize_with do
-    redirect_to main_app.root_path unless warden.user.admin == true
-  end
+  #config.authorize_with do
+  #  redirect_to main_app.root_path unless warden.user.admin == true
+  #end
 
   ## == Devise ==
   config.authenticate_with do
