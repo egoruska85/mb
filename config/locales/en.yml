@@ -1,0 +1,109 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   "true": "foo"
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  page_title: "MBachani"
+  navbar:
+    other: "Other"
+    categories: "All categories"
+    products: "All products"
+    main: "Main"
+    about: "About us"
+    chat: "Your chat"
+    search: "Search"
+    top_categories: "Top categories"
+  carousel:
+    details: "Details"
+    sizes: "Sizes"
+    colors: "Colors"
+    buy: "Buy"
+  home:
+    top: "Hot offers"
+    new: "New arrivals"
+  product:
+    see: "Number of views: "
+    category: "Category"
+    sizes: "Sizes: "
+    country: "Country: "
+    description: "Description: "
+    reviews: "Reviews: "
+    buy: "Buy at: "
+    recently: "Recently products"
+    all_products: "All products"
+    serached_name: "Everything found by request: "
+    video: "Video"
+    pictures: "Pictures"
+    colors: "colors: "
+    seasons: "Сезон: "
+    material: "Material: "
+    collection: "Collection: "
+    compound: "Material composition: "
+    style: "Style: "
+    lining: "Lining: "
+    lining_yes: "Yes"
+    atribute_no: "No"
+    clasp: "Clasp: "
+    characteristics: "Characteristics"
+    about: "About product"
+  rights: "All rights reserved"
+  category:
+    no_products: "There are no products in this category"
+    category: "All categories"
+  articles:
+    your_article: "Your requests"
+    all_article: "All requests"
+    log_in: "Requests"
+    themes: "Message subject"
+    message: "Message text"
+    answers: "Latest answers"
+    send: "Send"
+    user: "User"
+  comments:
+    message: "Message: "
+    no_answer: "No answer"
+    messages: "Messages: "
+  about:
+    about: "About us"
+  contact:
+    mail: "E-mail"
+    phone: "Our phone numbers: "
+    address: "Our address: "
+    text: "Text"
+    contacts: "Our contacts"
+    file: "Attach files"
+    write: "CONNECT WITH US"
+    name: "Name"
+    send: "Send"
+    message: "Message"
+    sales_phone: "Your phone number"
+    fax: "Fax"
+    social: "We are on social networks"
+    documentation: "Certificates and documents"
