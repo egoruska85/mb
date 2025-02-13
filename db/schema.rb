@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_12_192652) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_13_130522) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -126,6 +126,15 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_12_192652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_colors_on_product_id"
+  end
+
+  create_table "colors_products", force: :cascade do |t|
+    t.integer "color_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["color_id"], name: "index_colors_products_on_color_id"
+    t.index ["product_id"], name: "index_colors_products_on_product_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -291,6 +300,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_12_192652) do
   add_foreign_key "articles", "users"
   add_foreign_key "clasps", "products"
   add_foreign_key "colors", "products"
+  add_foreign_key "colors_products", "colors"
+  add_foreign_key "colors_products", "products"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "newarrivals", "products"
