@@ -122,10 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_13_130522) do
   create_table "colors", force: :cascade do |t|
     t.string "name_rus"
     t.string "name_eng"
-    t.integer "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_colors_on_product_id"
   end
 
   create_table "colors_products", force: :cascade do |t|
