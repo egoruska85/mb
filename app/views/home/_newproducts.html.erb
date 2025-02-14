@@ -27,11 +27,11 @@
                   hsl(47deg 100% 47%) 83%,
                   hsl(51deg 100% 49%) 92%,
                   hsl(55deg 100% 50%) 100%">
-                <h4>
+                <h5>
                   <%= arrival.product.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
                   <%= arrival.product.name_rus if params[:locale] == 'ru' %>
                   <%= arrival.product.name_eng if params[:locale] == 'en' %>
-                </h4>
+                </h5>
 
               </div>
             </div>
