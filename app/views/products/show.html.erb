@@ -134,7 +134,7 @@
               <div class="image-scroll">
                 <% @related_products.each do |product| %>
                   <%= link_to product_path(product) do %>
-                    <div class="order border-danger">
+                    <div class="border rounded">
                       <%= image_tag(product.images.first) %>
                     </div>
                   <% end %>

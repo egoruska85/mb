@@ -9,6 +9,9 @@
 }
 
 .image-scroll img {
-    width: 5rem; /* Высота изображений */
+    width: 50px; /* Высота изображений */
+    margin-right: 0px; /* Отступ между изображениями */
+}
+.image-scroll div {
     margin-right: 10px; /* Отступ между изображениями */
 }
