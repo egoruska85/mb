@@ -177,12 +177,22 @@
               </h4>
             </div>
             <div class="col-4 col-md-4 col-lg-4">
-              <h5 style="color: #D3D3D3;">
-                <%= t('product.sizes')%>
-                <%= link_to category_path(@category), style:"color: #B8860B;" do %>
-                  <%= @product.sizes %>
-                <% end %>
-              </h5>
+              <div class="row">
+                <div class="col-6">
+                  <h5 style="color: #D3D3D3;">
+                    <%= t('product.sizes')%>
+                  </h5>
+                </div>
+                <div class="col-6">
+                  <h5 style="color: #B8860B;">
+                    <%= @product.sizes %>
+                  </h5>
+                </div>
+              </div>
+
+
+
+
             </div>
             <div class="col-8 col-md-4 col-lg-8">
 
