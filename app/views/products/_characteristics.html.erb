@@ -6,12 +6,14 @@
 
   <div class="col-6">
     <div class="row">
+      <% @product.colors.each do |color| %>
       <div class="col-2">
         <br>
-        <% @product.colors.each do |color| %>
+
         <div class="border border-black rounded" style="background-color: <%= color.name_eng %>; min-width: 20; min-height: 20px;"></div>
-        <% end %>
+
       </div>
+      <% end %>
     </div>
 
 
