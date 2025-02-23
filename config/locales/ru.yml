@@ -2,6 +2,8 @@ ru:
   page_title: "MBachani"
   page_description: "MBachani - сайт модной одежды для женщин."
   page_keywords: "MBachani - сайт модной одежды для женщин."
+  exit: " Выйти"
+  enter: "Войти"
   navbar:
     other: "Другие"
     categories: "Все категории"
