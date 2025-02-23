@@ -8,7 +8,34 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="/css/scroll.css">
+
+    <style>
+    .scroll-container {
+        width: absolute; /* Ширина контейнера */
+        overflow-x: auto; /* Включаем горизонтальную прокрутку */
+        white-space: nowrap; /* Запрещаем перенос строк */
+
+    }
+
+    .scroll-container::-webkit-scrollbar {
+    display: none; /* Для Chrome, Safari и Opera */
+    }
+
+    .scroll-container img {
+        width: 50px; /* Высота изображений */
+    }
+
+    .scroll-item {
+        display: inline-block; /* Элементы в строку */
+
+        height: 69px; /* Высота каждого элемента */
+        margin: 5px; /* Отступы между элементами */
+        background-color: #f0f0f0; /* Цвет фона */
+
+    }
+</style>
+
+
   </head>
 
   <body style="background: #121212;">
@@ -130,18 +157,14 @@
 
         </div>
         <div class="col-12 col-lg-4 col-md-12">
-          <div class="image-scroll-container">
-              <div class="image-scroll">
-                <% @related_products.each do |product| %>
-                  <%= link_to product_path(product) do %>
-                    <div class="border rounded">
-                      <%= image_tag(product.images.first) %>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
+          <div class="scroll-container" id="scrollContainer" >
+            <% @related_products.each do |product| %>
+              <%= link_to product_path(product) do %>
+                <div class="scroll-item border rounded"><%= image_tag(product.images.first) %></div>
+              <% end %>
+            <% end %>
           </div>
-          <script src="/js/script.js"></script>
+
           <div class="row">
             <div class="col-8 col-md-4 col-lg-8">
               <h4 style="color: #D3D3D3;">
@@ -349,7 +372,14 @@
   </div>
 </div>
 
+<script>
+    const scrollContainer = document.getElementById('scrollContainer');
 
+    scrollContainer.addEventListener('wheel', (event) => {
+        event.preventDefault(); // Предотвращаем стандартное поведение прокрутки
+        scrollContainer.scrollLeft += event.deltaY; // Прокручиваем контейнер влево или вправо
+    });
+</script>
 
 
 
