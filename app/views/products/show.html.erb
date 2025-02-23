@@ -177,35 +177,20 @@
               </h4>
             </div>
             <div class="col-4 col-md-4 col-lg-4">
-              <div class="row">
-                <div class="col-6">
-                  <h4 style="color: #D3D3D3;"><%= t('product.country')%></h4>
-                </div>
-                <div class="col-6">
-                 <h4 style="color: #B8860B;">
-                    <%= @country.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
-                    <%= @country.name_eng if params[:locale] == 'en' %>
-                    <%= @country.name_rus if params[:locale] == 'ru' %>
-                  </h4>
-                </div>
-              </div>
-            </div>
-            <div class="col-8 col-md-4 col-lg-8">
-              <h4 style="color: #D3D3D3;">
+              <h5 style="color: #D3D3D3;">
                 <%= t('product.sizes')%>
                 <%= link_to category_path(@category), style:"color: #B8860B;" do %>
                   <%= @product.sizes %>
                 <% end %>
-              </h4>
+              </h5>
+            </div>
+            <div class="col-8 col-md-4 col-lg-8">
+
             </div>
             <div class="col-12">
               <div class="row">
-                <div class="col-4">
-                  <h4 style="color: #D3D3D3;">
-                    <%= t('product.description')%>
-                  </h4>
-                </div>
-                <div class="col-8" style="min-height: 350px; max-height: 350px;">
+
+                <div class="col-12" style="min-height: 350px; max-height: 350px;">
                   <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                       <button class="btn btn-dark active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true" style="color: #B8860B;">
