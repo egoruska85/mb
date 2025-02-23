@@ -33,6 +33,8 @@ en:
   page_title: "MBachani"
   page_description: "MBachani is a fashion clothing site for women."
   page_keywords: "MBachani is a fashion clothing site for women."
+  exit: " Log out"
+  enter: " Log in"
   navbar:
     other: "Other"
     categories: "All categories"
