@@ -7,18 +7,19 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @value = []
-    @category.products.each do |p|
-      @value << p.related_products
-    end
-    @value.uniq!
+    @filtered_products = @category.products.order(related_products: :desc)
+    #@value = []
+    #@category.products.each do |p|
+    #  @value << p.related_products
+    #end
+    #@value.uniq!
 
-    @filtered_products = []
-    @count = 0
-    @value.each do |value|
-      @filtered_products[@count] = Product.where(related_products: value)
-      @count += 1
-    end
+    #@filtered_products = []
+    #@count = 0
+    #@value.each do |value|
+    #  @filtered_products[@count] = Product.where(related_products: value)
+    #  @count += 1
+    #end
 
 
 
