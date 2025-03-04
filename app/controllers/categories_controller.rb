@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     @filtered_products = []
     @count = 0
     @value.each do |value|
-      @filtered_products[@count] = Product.where(related_products: value).first
+      @filtered_products[@count] = Product.where(related_products: value)
       @count += 1
     end
 
