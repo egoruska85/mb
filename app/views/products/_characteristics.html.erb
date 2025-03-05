@@ -48,7 +48,7 @@
       <div class="col-6">
         <center>
           <% if @product.material != nil %>
-          <p style="color: #FF4500;">
+          <p style="color: #B8860B;">
               <%= @product.material.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
               <%= @product.material.name_eng if params[:locale] == 'en' %>
               <%= @product.material.name_rus if params[:locale] == 'ru' %>
@@ -70,7 +70,7 @@
       <div class="col-6">
         <center>
           <% if @product.compound != nil %>
-          <p style="color: #FF4500;">
+          <p style="color: #B8860B;">
             <%= @product.compound.value_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
             <%= @product.compound.value_eng if params[:locale] == 'en' %>
             <%= @product.compound.value_rus if params[:locale] == 'ru' %>
@@ -91,7 +91,7 @@
       </div>
       <div class="col-6">
         <center>
-          <p style="color: #FF4500;">
+          <p style="color: #B8860B;">
             <% if @product.clasp == true %>
               <%= @product.viewclasp.name_ru if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
               <%= @product.viewclasp.name_eng if params[:locale] == 'en' %>
@@ -115,7 +115,7 @@
       </div>
       <div class="col-6">
         <center>
-          <p style="color: #FF4500;">
+          <p style="color: #B8860B;">
             <% if @product.lining == true %>
               <%= @product.viewlining.name_ru if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
               <%= @product.viewlining.name_eng if params[:locale] == 'en' %>
@@ -142,7 +142,7 @@
   </div>
   <div class="col-6">
     <center>
-    <p style="color: #FF4500;">
+    <p style="color: #B8860B;">
       <% if @product.collection != nil %>
       <%= @product.collection.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
       <%= @product.collection.name_eng if params[:locale] == 'en' %>
@@ -164,7 +164,7 @@
   </div>
   <div class="col-6">
     <center>
-    <p style="color: #FF4500;">
+    <p style="color: #B8860B;">
       <% if @product.collection != nil %>
       <%= @product.season.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
       <%= @product.season.name_eng if params[:locale] == 'en' %>
@@ -186,7 +186,7 @@
   </div>
   <div class="col-6">
     <center>
-    <p style="color: #FF4500;">
+    <p style="color: #B8860B;">
       <% if @product.collection != nil %>
       <%= @product.style.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
       <%= @product.style.name_eng if params[:locale] == 'en' %>
