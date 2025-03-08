@@ -10,7 +10,9 @@
       <div class="col-2">
         <br>
 
-        <div class="border border-black rounded" style="background-color: <%= color.name_eng %>; min-width: 20; min-height: 20px;"></div>
+        <%= color.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+        <%= color.name_eng if params[:locale] == 'en' %>
+        <%= color.name_rus if params[:locale] == 'ru' %>
 
       </div>
       <% end %>
