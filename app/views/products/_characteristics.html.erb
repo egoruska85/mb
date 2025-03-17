@@ -6,14 +6,16 @@
         <p style="color: white;"><%= t('product.colors')%></p>
       </div>
       <div class="col-10">
-        <% @product.colors.each do |color| %>
+
           <br>
           <p style="color: #B8860B;">
-            <%= color.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
-            <%= color.name_eng if params[:locale] == 'en' %>
-            <%= color.name_rus if params[:locale] == 'ru' %>
+            <% @product.colors.each do |color| %>
+              <%= color.name_rus + " " if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+              <%= color.name_eng + " " if params[:locale] == 'en' %>
+              <%= color.name_rus + " " if params[:locale] == 'ru' %>
+            <% end %>
           </p>
-        <% end %>
+
       </div>
     </div>
   </div>
