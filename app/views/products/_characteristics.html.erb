@@ -43,16 +43,16 @@
     <div class="row">
       <div class="col-6">
         <center>
-          <p style="color: white;"><%= t('product.material')%></p>
+          <p style="color: #D3D3D3;">
+            <%= t('product.sizes')%>
+          </p>
         </center>
       </div>
       <div class="col-6">
         <center>
           <% if @product.material != nil %>
           <p style="color: #B8860B;">
-              <%= @product.material.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
-              <%= @product.material.name_eng if params[:locale] == 'en' %>
-              <%= @product.material.name_rus if params[:locale] == 'ru' %>
+            <%= @product.sizes %>
           </p>
           <% end %>
         </center>
