@@ -1,41 +1,40 @@
 <div class="row">
-  <div class="col-2">
-    <br>
-    <p style="color: white;"><%= t('product.colors')%></p>
-  </div>
-
-  <div class="col-6">
+  <div class="col-8">
     <div class="row">
-      <% @product.colors.each do |color| %>
       <div class="col-2">
         <br>
-        <p style="color: #B8860B;">
-          <%= color.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
-          <%= color.name_eng if params[:locale] == 'en' %>
-          <%= color.name_rus if params[:locale] == 'ru' %>
-        </p>
+        <p style="color: white;"><%= t('product.colors')%></p>
       </div>
-      <% end %>
+      <div class="col-10">
+        <% @product.colors.each do |color| %>
+        <div class="col-2">
+          <br>
+          <p style="color: #B8860B;">
+            <%= color.name_rus + "; " if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+            <%= color.name_eng + "; " if params[:locale] == 'en' %>
+            <%= color.name_rus + "; " if params[:locale] == 'ru' %>
+          </p>
+        </div>
+        <% end %>
+      </div>
     </div>
-
-
   </div>
   <div class="col-4">
-    <br>
+      <br>
     <div class="row">
       <div class="col-6">
         <h4 style="color: #D3D3D3;"><%= t('product.country')%></h4>
       </div>
       <div class="col-6">
-       <h4 style="color: #B8860B;">
-          <%= @country.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
-          <%= @country.name_eng if params[:locale] == 'en' %>
-          <%= @country.name_rus if params[:locale] == 'ru' %>
-        </h4>
+        <h4 style="color: #B8860B;">
+           <%= @country.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+           <%= @country.name_eng if params[:locale] == 'en' %>
+           <%= @country.name_rus if params[:locale] == 'ru' %>
+         </h4>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
 <hr>
 <div class="row">
