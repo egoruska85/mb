@@ -9,9 +9,9 @@
         <% @product.colors.each do |color| %>
           <br>
           <p style="color: #B8860B;">
-            <%= color.name_rus + if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
-            <%= color.name_eng + if params[:locale] == 'en' %>
-            <%= color.name_rus + if params[:locale] == 'ru' %>
+            <%= color.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+            <%= color.name_eng if params[:locale] == 'en' %>
+            <%= color.name_rus if params[:locale] == 'ru' %>
           </p>
         <% end %>
       </div>
