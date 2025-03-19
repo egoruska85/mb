@@ -41,7 +41,7 @@
 
 
 
-  <%= video_tag rails_blob_path(video), size: "118x178", controls: false, audio: false, autoplay: true, onclick:"this.paused ? this.play() : this.pause(); arguments[0].preventDefault();" %>
+  <%= video_tag rails_blob_path(video), size: "118x178", controls: false, audio: false, autoplay: false, onclick:"this.paused ? this.play() : this.pause(); arguments[0].preventDefault();" %>
 
 
                 </div>
