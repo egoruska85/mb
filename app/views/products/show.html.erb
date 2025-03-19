@@ -41,7 +41,7 @@
 
 
 
-  <%= video_tag rails_blob_path(video), size: "118x178", controls: false, audio: false, autoplay: true, onclick:"this.play()"%>
+  <%= video_tag rails_blob_path(video), size: "118x178", controls: false, audio: false, autoplay: true, onclick:"this.paused ? this.play() : this.pause(); arguments[0].preventDefault();" %>
 
 
                 </div>
@@ -125,9 +125,7 @@
 </script>
 
 
-<script type="text/javascript">
-  onclick="this.paused ? this.play() : this.pause(); arguments[0].preventDefault();"
-</script>
+
 
 
 <script src="/gallery/script.js" defer></script>
