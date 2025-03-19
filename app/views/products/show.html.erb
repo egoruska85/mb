@@ -5,7 +5,31 @@
     <title></title>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&amp;subset=cyrillic" rel="stylesheet">
+    <style>
+    .scroll-container {
+        width: absolute; /* Ширина контейнера */
+        overflow-x: auto; /* Включаем горизонтальную прокрутку */
+        white-space: nowrap; /* Запрещаем перенос строк */
 
+    }
+
+    .scroll-container::-webkit-scrollbar {
+    display: none; /* Для Chrome, Safari и Opera */
+    }
+
+    .scroll-container img {
+        width: 50px; /* Высота изображений */
+    }
+
+    .scroll-item {
+        display: inline-block; /* Элементы в строку */
+
+        height: 69px; /* Высота каждого элемента */
+        margin: 5px; /* Отступы между элементами */
+        background-color: #f0f0f0; /* Цвет фона */
+
+    }
+</style>
 
 
     <link rel="stylesheet" href="/gallery/setting.css">
@@ -31,23 +55,17 @@
 <div class="shadow-lg p-3 mb-5 rounded order">
   <div class="container">
     <div class="row">
-      <div class="col-12 col-lg-6 col-md-6">
+      <!---Image block -->
+      <div class="col-12 col-lg-4 col-md-6">
         <div class="frame">
           <div class="gallery">
             <% @index = 1 %>
-
               <% @product.videos.each do |video| %>
                 <div class="picture pic-<%= @index %>">
-
-
-
-  <%= video_tag rails_blob_path(video), size: "118x178", controls: false, audio: false, autoplay: false, onclick:"this.paused ? this.play() : this.pause(); arguments[0].preventDefault();" %>
-
-
+                  <%= video_tag rails_blob_path(video), size: "118x178", controls: false, audio: false, autoplay: false, onclick:"this.paused ? this.play() : this.pause(); arguments[0].preventDefault();" %>
                 </div>
                 <% @index = @index + 1 %>
               <% end %>
-
             <% if @product.images.attached? %>
               <% @product.images.each do |image| %>
                 <div class="picture pic-<%= @index %>">
@@ -58,6 +76,21 @@
             <% end %>
           </div>
         </div>
+      </div>
+      <!---Image block -->
+      <div class="col-12 col-lg-8 col-md-6">
+        <div class="row">
+          <div class="col-12">
+            <div class="scroll-container" id="scrollContainer" >
+              <% @related_products.each do |product| %>
+                <%= link_to product_path(product) do %>
+                  <div class="scroll-item border rounded"><%= image_tag(product.images.first) %></div>
+                  <% @index = @index + 1 %>
+                <% end %>
+              <% end %>
+            </div>
+        </div>
+
       </div>
     </div>
   </div>
