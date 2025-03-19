@@ -16,7 +16,7 @@ ru:
   carousel:
     details: "Подробнее"
     sizes: "Размеры"
-    colors: "Цвет"
+    colors: "Цвета"
     buy: "Купить"
   home:
     top: "Горячие предложения"
@@ -35,7 +35,7 @@ ru:
     video: "Видео"
     pictures: "Картинки"
     serached_name: "Всё что найдено по запросу: "
-    colors: "Цвета: "
+    colors: "Цвет: "
     seasons: "Сезон: "
     material: "Материал: "
     collection: "Коллекция: "

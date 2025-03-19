@@ -47,7 +47,7 @@ en:
   carousel:
     details: "Details"
     sizes: "Sizes"
-    colors: "Color"
+    colors: "Colors"
     buy: "Buy"
   home:
     top: "Hot offers"
@@ -65,7 +65,7 @@ en:
     serached_name: "Everything found by request: "
     video: "Video"
     pictures: "Pictures"
-    colors: "colors: "
+    colors: "Color: "
     seasons: "Сезон: "
     material: "Material: "
     collection: "Collection: "
