@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-6">
     <div class="row">
-      <div class="col-3">
+      <div class="col-2">
         <br>
         <p style="color: white;"><%= t('product.colors')%></p>
       </div>
-      <div class="col-8">
+      <div class="col-10">
         <br>
         <p style="color: #B8860B;">
           <% @product.colors.each do |color| %>
@@ -23,25 +23,7 @@
         <br>
         <p style="color: #D3D3D3;"><%= t('product.country')%></p>
       </div>
-      <div class="col-8">
-        <br>
-        <p style="color: #B8860B;">
-
-          <%= @country.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
-          <%= @country.name_eng if params[:locale] == 'en' %>
-          <%= @country.name_rus if params[:locale] == 'ru' %>
-
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-6">
-    <div class="row">
-      <div class="col-3">
-        <br>
-        <p style="color: #D3D3D3;"><%= t('product.sizes')%></p>
-      </div>
-      <div class="col-8">
+      <div class="col-9">
         <br>
         <p style="color: #B8860B;">
           <%= @country.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
@@ -55,25 +37,39 @@
     <div class="row">
       <div class="col-3">
         <br>
-        <p style="color: #D3D3D3;">
-          <%= t('product.sizes')%>
+        <p style="color: white;"><%= t('product.sizes')%></p>
+      </div>
+      <div class="col-9">
+        <br>
+        <p style="color: #B8860B;">
+          <%= @product.sizes %>
         </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="row">
+      <div class="col-4">
+        <br>
+        <p style="color: white;"><%= t('product.collection')%></p>
       </div>
       <div class="col-8">
         <br>
         <p style="color: #B8860B;">
-          <% if @product.material != nil %>
-            <%= @product.sizes %>
-          </p>
+          <% if @product.collection != nil %>
+          <%= @product.collection.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+          <%= @product.collection.name_eng if params[:locale] == 'en' %>
+          <%= @product.collection.name_rus if params[:locale] == 'ru' %>
           <% end %>
+        </p>
       </div>
     </div>
   </div>
   <div class="col-6">
     <div class="row">
-      <div class="col-3">
+      <div class="col-4">
         <br>
-        <p style="color: white;"><%= t('product.compound')%></p>
+        <p style="color: white;"><%= t('product.material')%></p>
       </div>
       <div class="col-8">
         <br>
@@ -89,7 +85,7 @@
   </div>
   <div class="col-6">
     <div class="row">
-      <div class="col-3">
+      <div class="col-4">
         <br>
         <p style="color: white;"><%= t('product.clasp')%></p>
       </div>
@@ -131,24 +127,6 @@
     <div class="row">
       <div class="col-4">
         <br>
-        <p style="color: white;"><%= t('product.collection')%></p>
-      </div>
-      <div class="col-8">
-        <br>
-        <p style="color: #B8860B;">
-          <% if @product.collection != nil %>
-          <%= @product.collection.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
-          <%= @product.collection.name_eng if params[:locale] == 'en' %>
-          <%= @product.collection.name_rus if params[:locale] == 'ru' %>
-          <% end %>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-6">
-    <div class="row">
-      <div class="col-3">
-        <br>
         <p style="color: white;"><%= t('product.seasons')%></p>
       </div>
       <div class="col-8">
@@ -165,7 +143,7 @@
   </div>
   <div class="col-6">
     <div class="row">
-      <div class="col-3">
+      <div class="col-4">
         <br>
         <p style="color: white;"><%= t('product.style')%></p>
       </div>
@@ -182,7 +160,6 @@
     </div>
   </div>
 </div>
-<hr>
 <p>
   <%= simple_format @product.other_rus, style:"color: #B8860B;" if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
   <%= simple_format @product.other_rus, style:"color: #B8860B;" if params[:locale] == 'ru' %>
