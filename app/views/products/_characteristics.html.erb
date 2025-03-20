@@ -112,11 +112,11 @@
       <div class="col-8 col-md-6">
         <br>
         <p style="color: #B8860B;">
-          <% if @product.lining == true %>
+          <% if @product.viewlining != nil %>
             <%= @product.viewlining.name_ru if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
             <%= @product.viewlining.name_eng if params[:locale] == 'en' %>
             <%= @product.viewlining.name_ru if params[:locale] == 'ru' %>
-          <% else %>
+          <% elsif %>
             <%= t('product.atribute_no')%>
           <% end %>
         </p>
