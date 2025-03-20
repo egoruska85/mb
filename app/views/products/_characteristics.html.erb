@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-6">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 col-md-6">
         <br>
         <p style="color: white;"><%= t('product.colors')%></p>
       </div>
-      <div class="col-6">
+      <div class="col-6 col-md-6"">
         <br>
         <p style="color: #B8860B;">
           <% @product.colors.each do |color| %>
@@ -19,11 +19,11 @@
   </div>
   <div class="col-6">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 col-md-6">
         <br>
         <p style="color: #D3D3D3;"><%= t('product.country')%></p>
       </div>
-      <div class="col-6">
+      <div class="col-6 col-md-6">
         <br>
         <p style="color: #B8860B;">
           <%= @country.name_rus if params != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
@@ -33,13 +33,13 @@
       </div>
     </div>
   </div>
-  <div class="col-6">
+  <div class="col-6 col-md-6">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 col-md-6">
         <br>
         <p style="color: white;"><%= t('product.sizes')%></p>
       </div>
-      <div class="col-6">
+      <div class="col-6 col-md-6">
         <br>
         <p style="color: #B8860B;">
           <%= @product.sizes %>
@@ -49,11 +49,11 @@
   </div>
   <div class="col-6">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 col-md-6">
         <br>
         <p style="color: white;"><%= t('product.collection')%></p>
       </div>
-      <div class="col-8">
+      <div class="col-8 col-md-6">
         <br>
         <p style="color: #B8860B;">
           <% if @product.collection != nil %>
@@ -67,11 +67,11 @@
   </div>
   <div class="col-6">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 col-md-6">
         <br>
         <p style="color: white;"><%= t('product.material')%></p>
       </div>
-      <div class="col-8">
+      <div class="col-8 col-md-6">
         <br>
         <% if @product.compound != nil %>
         <p style="color: #B8860B;">
@@ -85,11 +85,11 @@
   </div>
   <div class="col-6">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 col-md-6">
         <br>
         <p style="color: white;"><%= t('product.clasp')%></p>
       </div>
-      <div class="col-8">
+      <div class="col-8 col-md-6">
         <br>
         <p style="color: #B8860B;">
           <% if @product.clasp == true %>
@@ -105,11 +105,11 @@
   </div>
   <div class="col-6">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 col-md-6">
         <br>
         <p style="color: white;"><%= t('product.lining')%></p>
       </div>
-      <div class="col-8">
+      <div class="col-8 col-md-6">
         <br>
         <p style="color: #B8860B;">
           <% if @product.lining == true %>
@@ -125,11 +125,11 @@
   </div>
   <div class="col-6">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 col-md-6">
         <br>
         <p style="color: white;"><%= t('product.seasons')%></p>
       </div>
-      <div class="col-8">
+      <div class="col-8 col-md-6">
         <br>
         <p style="color: #B8860B;">
           <% if @product.collection != nil %>
