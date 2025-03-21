@@ -21,11 +21,11 @@
           </div>
           <div class="col-12 col-lg-12">
             <center>
-              <p style="color: black; font-size: 15px;">
-                <%= @backend.about_rus if params[:locale] != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
-                <%= @backend.about_rus if params[:locale] == 'ru' %>
-                <%= @backend.about_eng if params[:locale] == 'en' %>
-              </p>
+              <h6 style="color: black; font-size: 15px;">
+                <%= simple_format @backend.about_rus if params[:locale] != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
+                <%= simple_format @backend.about_rus if params[:locale] == 'ru' %>
+                <%= simple_format @backend.about_eng if params[:locale] == 'en' %>
+              </h6>
             </center>
           </div>
 
