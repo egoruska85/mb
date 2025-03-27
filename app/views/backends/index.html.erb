@@ -26,7 +26,7 @@
                 <%= simple_format @backend.about_rus if params[:locale] == 'ru' %>
                 <%= simple_format @backend.about_eng if params[:locale] == 'en' %>
                 <p>
-                  <a href="https://www.wildberries.ru/seller/3998168" class="wb" style="font-size: 17px;">Wildberries</a>
+                  <a href="https://www.wildberries.ru/seller/3998168" class="wb" style="font-size: 17px; color: #ff00ff;">Wildberries</a>
                   <%= t('backend.and') %>
                   <a href="https://www.ozon.ru/seller/mb-creation-1751547/products/?miniapp=seller_1751547" class="ozon" style="font-size: 17px;">OZON</a>
                   <%= 'Мы ждем вас!' if params[:locale] != true and params[:locale] != 'ru' and params[:locale] != 'en' %>
