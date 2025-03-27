@@ -82,3 +82,5 @@ ru:
     fax: "Факс"
     social: "Мы в социальных сетях"
     documentation: "Сертификаты и документы"
+  backend:
+    and: " и "  
