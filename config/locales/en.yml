@@ -111,3 +111,5 @@ en:
     fax: "Fax"
     social: "We are on social networks"
     documentation: "Certificates and documents"
+  backend:
+    and: " and "    
